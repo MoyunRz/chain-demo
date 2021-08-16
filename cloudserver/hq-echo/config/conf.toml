@@ -1,0 +1,81 @@
+# default false
+release_mode = false
+
+# default DEBUG, DEBUG INFO WARN ERROR OFF
+log_level = "DEBUG"
+
+# REDIS,FILE,COOKIE(COOKIE Default)
+session_store = "REDIS"
+
+# REDIS,MEMCACHED,IN_MEMORY(IN_MEMORY Default)
+cache_store = "REDIS"
+
+[app]
+name = "Echo Web"
+version = "0.0.1"
+
+[server]
+graceful = true
+addr = ":8080"
+
+# Domains
+domain_api = "echo.api.localhost.com"
+domain_web = "localhost"
+domain_socket = "echo.socket.localhost.com"
+
+[static]
+# BINDATA,FILE(FILE Default)
+type = "BINDATA"
+
+[tmpl]
+# PONGO2,TEMPLATE(TEMPLATE Default)
+type = "PONGO2"
+# BINDATA,FILE(FILE Default)
+data = "BINDATA"
+# PONGO2(template/pongo2),TEMPLATE(template)
+dir = "template/pongo2"
+# .html,.tpl
+suffix = ".html"
+
+[database]
+name = "goweb_db"
+user_name = "root"
+pwd  = "123456"
+host = "127.0.0.1"
+port = "3306"
+
+[redis]
+server = "192.168.90.175:6379"
+pwd = ""
+
+[memcached]
+server = "localhost:11211"
+# 分布式追踪
+[opentracing]
+disable = false
+
+# "jaeger" "appdash" or "elastic"
+type = "elastic"
+
+# jaeger or elastic serviceName
+service_name = "echo-web"
+
+# jaeger-agent 127.0.0.1:6831
+# appdash http://localhost:8700
+address = "127.0.0.1:6831"
+
+# 对Go应用的某个服务做监控、做统计，应用级监控和测量
+[metrics]
+disable = true
+freq_sec = 10
+address = "127.0.0.1:2003"  # Graphite
+
+[rabbitmq]
+mq_url = "127.0.0.1:5672"
+mq_user = "guest"
+mq_password = "guest"
+
+[cloudserver]
+server_name = "hq-echo"
+# 服务地址
+server_addr = ":18003"

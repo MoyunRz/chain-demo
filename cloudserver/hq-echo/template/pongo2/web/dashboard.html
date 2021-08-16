@@ -1,0 +1,131 @@
+{% extends "../base.html" %}
+
+{% block head_title %}
+{{title}}
+{% endblock %}
+
+
+{% block head_scripts %}
+<script type="text/javascript">
+    requirejs(['bootstrap']);
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding:0px 10px; width:900px;">
+    <table class="table table-striped">
+        <tr>
+            <td>服务运行时间</td>
+            <td>{{SysStatus.Uptime}}</td>
+        </tr>
+        <tr>
+            <td>当前 Goroutines 数量</td>
+            <td>{{SysStatus.NumGoroutine}}</td>
+        </tr>
+        <tr>
+            <td>当前内存使用量</td>
+            <td>{{SysStatus.MemAllocated}}</td>
+        </tr>
+        <tr>
+            <td>所有被分配的内存</td>
+            <td>{{SysStatus.MemTotal}}</td>
+        </tr>
+        <tr>
+            <td>内存占用量</td>
+            <td>{{SysStatus.MemSys}}</td>
+        </tr>
+        <tr>
+            <td>指针查找次数</td>
+            <td>{{SysStatus.Lookups}}</td>
+        </tr>
+        <tr>
+            <td>内存分配次数</td>
+            <td>{{SysStatus.MemMallocs}}</td>
+        </tr>
+        <tr>
+            <td>内存释放次数</td>
+            <td>{{SysStatus.MemFrees}}</td>
+        </tr>
+        <tr>
+            <td>当前 Heap 内存使用量</td>
+            <td>{{SysStatus.HeapAlloc}}</td>
+        </tr>
+        <tr>
+            <td>Heap 内存占用量</td>
+            <td>{{SysStatus.HeapSys}}</td>
+        </tr>
+        <tr>
+            <td>Heap 内存空闲量</td>
+            <td>{{SysStatus.HeapIdle}}</td>
+        </tr>
+        <tr>
+            <td>正在使用的 Heap 内存</td>
+            <td>{{SysStatus.HeapInuse}}</td>
+        </tr>
+        <tr>
+            <td>被释放的 Heap 内存</td>
+            <td>{{SysStatus.HeapReleased}}</td>
+        </tr>
+        <tr>
+            <td>Heap 对象数量</td>
+            <td>{{SysStatus.HeapObjects}}</td>
+        </tr>
+        <tr>
+            <td>启动 Stack 使用量</td>
+            <td>{{SysStatus.StackInuse}}</td>
+        </tr>
+        <tr>
+            <td>被分配的 Stack 内存</td>
+            <td>{{SysStatus.StackSys}}</td>
+        </tr>
+        <tr>
+            <td>MSpan 结构内存使用量</td>
+            <td>{{SysStatus.MSpanInuse}}</td>
+        </tr>
+        <tr>
+            <td>被分配的 MSpan 结构内存</td>
+            <td>{{SysStatus.HeapSys}}</td>
+        </tr>
+        <tr>
+            <td>MCache 结构内存使用量</td>
+            <td>{{SysStatus.MCacheInuse}}</td>
+        </tr>
+        <tr>
+            <td>被分配的 MCache 结构内存</td>
+            <td>{{SysStatus.MCacheSys}}</td>
+        </tr>
+        <tr>
+            <td>被分配的剖析哈希表内存</td>
+            <td>{{SysStatus.BuckHashSys}}</td>
+        </tr>
+        <tr>
+            <td>被分配的 GC 元数据内存</td>
+            <td>{{SysStatus.GCSys}}</td>
+        </tr>
+        <tr>
+            <td>其它被分配的系统内存</td>
+            <td>{{SysStatus.OtherSys}}</td>
+        </tr>
+        <tr>
+            <td>下次 GC 内存回收量</td>
+            <td>{{SysStatus.NextGC}}</td>
+        </tr>
+        <tr>
+            <td>距离上次 GC 时间</td>
+            <td>{{SysStatus.LastGC}}</td>
+        </tr>
+        <tr>
+            <td>GC 暂停时间总量</td>
+            <td>{{SysStatus.PauseTotalNs}}</td>
+        </tr>
+        <tr>
+            <td>上次 GC 暂停时间</td>
+            <td>{{SysStatus.PauseNs}}</td>
+        </tr>
+        <tr>
+            <td>GC 执行次数</td>
+            <td>{{SysStatus.NumGC}}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

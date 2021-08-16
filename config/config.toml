@@ -1,0 +1,129 @@
+# default false
+release_mode = false
+# 运行模式(debug:调试,test:测试,release:正式)
+RunMode = "debug"
+# default DEBUG, DEBUG INFO WARN ERROR OFF
+log_level = "DEBUG"
+
+# REDIS,FILE,COOKIE(COOKIE Default)
+session_store = "REDIS"
+
+# REDIS,MEMCACHED,IN_MEMORY(IN_MEMORY Default)
+cache_store = "REDIS"
+
+[app]
+    name = "Echo Web"
+    version = "0.0.1"
+
+[server]
+    graceful = true
+    addr = ":8080"
+
+# Domains
+domain_api = "echo.api.localhost.com"
+domain_web = "echo.www.localhost.com"
+domain_socket = "echo.socket.localhost.com"
+
+[static]
+    # BINDATA,FILE(FILE Default)
+    type = "BINDATA"
+
+[tmpl]
+    # PONGO2,TEMPLATE(TEMPLATE Default)
+    type = "PONGO2"
+    # BINDATA,FILE(FILE Default)
+    data = "BINDATA"
+    # PONGO2(template/pongo2),TEMPLATE(template)
+    dir = "template/pongo2"
+    # .html,.tpl
+    suffix = ".html"
+
+[database]
+    name = "goweb_db"
+    user_name = "root"
+    pwd  = "123456"
+    host = "127.0.0.1"
+    port = "3306"
+    max_conn = 10
+    max_open = 100
+
+[redis]
+    server = "192.168.90.175:6379"
+    pwd = ""
+
+[memcached]
+    server = "localhost:11211"
+# 分布式追踪
+[opentracing]
+    disable = false
+    # "jaeger" "appdash" or "elastic"
+    type = "elastic"
+    # jaeger or elastic serviceName
+    service_name = "echo-web"
+    # jaeger-agent 127.0.0.1:6831
+    # appdash http://localhost:8700
+    address = "127.0.0.1:6831"
+
+# 对Go应用的某个服务做监控、做统计，应用级监控和测量
+[metrics]
+    disable = true
+    freq_sec = 10
+    address = "127.0.0.1:2003"  # Graphite
+
+[rabbitmq]
+    mq_url = "127.0.0.1:5672"
+    mq_user = "guest"
+    mq_password = "guest"
+
+[JWTAuth]
+    # 是否启用
+    Enable = true
+    # 签名方式(支持：HS512/HS384/HS512)
+    SigningMethod = "HS512"
+    # 签名key
+    SigningKey = "gin-admin"
+    # 过期时间（单位秒）
+    Expired = 7200
+    # 存储(支持：file/redis)
+    Store = "file"
+    # 文件路径
+    FilePath = "data/jwt_auth.db"
+    # redis 数据库(如果存储方式是redis，则指定存储的数据库)
+    RedisDB = 10
+    # 存储到 redis 数据库中的键名前缀
+    RedisPrefix = "auth_"
+
+[CORS]
+    # 是否启用
+    Enable = false
+    # 允许跨域请求的域名列表(*表示全部允许)
+    AllowOrigins = ["*"]
+    # 允许跨域请求的请求方式列表
+    AllowMethods = ["GET", "POST", "PUT", "DELETE", "PATCH"]
+    # 允许客户端与跨域请求一起使用的非简单标头的列表
+    AllowHeaders = []
+    # 请求是否可以包含cookie，HTTP身份验证或客户端SSL证书等用户凭据
+    AllowCredentials = true
+    # 可以缓存预检请求结果的时间（以秒为单位）
+    MaxAge = 7200
+
+[Casbin]
+    # 是否启用casbin
+    Enable = true
+    # debug模式
+    Debug = false
+    # 模型配置文件(也可以启动服务时使用-m指定)
+    Model = ""
+    # 是否启用定期自动加载策略
+    AutoLoad = false
+    # 定期自动加载策略时间间隔（单位秒）
+    AutoLoadInternal = 60
+[Root]
+    # 用户ID
+    UserID = 9
+    # 登录用户名
+    UserName = "root"
+    # 登录密码
+    Password = "abc-123"
+    # 显示名称
+    RealName = "Admin"

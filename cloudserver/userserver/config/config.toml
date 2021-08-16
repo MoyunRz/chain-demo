@@ -1,0 +1,9 @@
+[cloudserver]
+# 服务名称
+server_name = "userserver"
+# 服务地址
+server_addr = ":18001"
+
+
+
+

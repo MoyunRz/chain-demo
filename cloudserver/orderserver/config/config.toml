@@ -1,0 +1,8 @@
+[cloudserver]
+server_name = "orderserver"
+# 服务地址
+server_addr = ":18002"
+
+
+
+
